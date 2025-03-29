@@ -12,10 +12,11 @@ import random
 import csv
 import json
 import sys
+import requests
 from datetime import datetime
 
 class BookingScraper:
-    def __init__(self, csv_file, proxy):
+    def __init__(self, csv_file):
         self.driver = self._init_driver(self.get_proxy())
         self.csv_file = csv_file
         self.fieldnames = ["title", "address", "cost", "review_score", "number_of_reviews", "room_type", "url"]
@@ -26,19 +27,19 @@ class BookingScraper:
         print("Initialising driver...")
 
         #Need to check
-        try:
-            user_agent = UserAgent(browsers=["chrome"])
-            options = uc.ChromeOptions()
-            options.add_argument(f'user-agent={user_agent.chrome}')
-            options.add_argument('--disable-notifications')
-            options.add_argument(f'--proxy-server=http://{proxy}')
-            driver = uc.Chrome(enable_cdp_events=True, options=options)
-        except:
-            user_agent = UserAgent(browsers=["chrome"])
-            options = uc.ChromeOptions()
-            options.add_argument(f'user-agent={user_agent.chrome}')
-            options.add_argument('--disable-notifications')
-            driver = uc.Chrome(enable_cdp_events=True, options=options)
+        # try:
+        #     user_agent = UserAgent(browsers=["chrome"])
+        #     options = uc.ChromeOptions()
+        #     options.add_argument(f'user-agent={user_agent.chrome}')
+        #     options.add_argument('--disable-notifications')
+        #     options.add_argument(f'--proxy-server=http://{proxy}')
+        #     driver = uc.Chrome(enable_cdp_events=True, options=options)
+        # except:
+        user_agent = UserAgent(browsers=["chrome"])
+        options = uc.ChromeOptions()
+        options.add_argument(f'user-agent={user_agent.chrome}')
+        options.add_argument('--disable-notifications')
+        driver = uc.Chrome(enable_cdp_events=True, options=options)
             
         return driver
     
@@ -313,7 +314,7 @@ class BookingScraper:
 if __name__ == '__main__':
 
     current_date = datetime.now().strftime("%d-%m-%Y")
-    csv_file = "output/{current_date}.csv"
+    csv_file = f"output/{current_date}.csv"
     scraper = BookingScraper(csv_file)
 
     # Main search URL
