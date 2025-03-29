@@ -71,6 +71,12 @@ Implemented not only the required cheapest listings endpoint but also additional
 -   **Description:**  
     Returns a paginated list of the 50 cheapest listings, sorted by cost.
     
+  - **Query Parameters:**
+
+     `page` (integer, default: 1) – The page number to retrieve.
+        
+     `per_page` (integer, default: 50) – The number of listings per page.
+    
 -   **Justification:**  
     This endpoint provides quick access to the lowest-priced properties, enabling vacationers to identify cheapest holiday—a principle that can be applied to evaluate investment opportunities in other asset classes.
     
@@ -79,6 +85,8 @@ Implemented not only the required cheapest listings endpoint but also additional
 
 -   **Description:**  
     Provides aggregated market statistics such as average price, median price, total listings, price range, and average review score.
+   - **Query Parameters:**
+   None
     
 -   **Justification:**  
     These statistics offer a comprehensive market snapshot, allowing investors to gauge overall market health and trends, which is vital for informed decision-making in investment contexts.
@@ -88,7 +96,9 @@ Implemented not only the required cheapest listings endpoint but also additional
 
 -   **Description:**  
     Enables keyword-based search across property titles and addresses.
-    
+  - **Query Parameters:**
+     `q` (string) – The keyword to search for in property titles and addresses.
+
 -   **Justification:**  
     This endpoint facilitates targeted data retrieval, helping investors quickly filter and segment markets based on specific criteria, a key capability when scouting for niche investment opportunities.
     
@@ -97,6 +107,11 @@ Implemented not only the required cheapest listings endpoint but also additional
 
 -   **Description:**  
     Filters listings within a specified price range.
+  - **Query Parameters:**
+
+     `min` (float) – The minimum price for filtering listings.
+        
+     `max` (float) – The maximum price for filtering listings.
     
 -   **Justification:**  
     Isolating properties by price allows investors to analyze specific market segments and compare asset valuations, which is essential for identifying market mispricings and investment targets.
@@ -106,6 +121,11 @@ Implemented not only the required cheapest listings endpoint but also additional
 
 -   **Description:**  
     Computes a "value score" (review score divided by cost) and returns the top 10 best-value listings within a given price range.
+ - **Query Parameters:**
+
+     `min` (float) – The minimum price to filter listings.
+        
+     `max` (float) – The maximum price to filter listings.
     
 -   **Justification:**  
     By quantifying value through quality-to-price ratios, this endpoint helps pinpoint high-potential assets, a methodology that can be extended to assess investment attractiveness in various markets.
@@ -116,6 +136,8 @@ Implemented not only the required cheapest listings endpoint but also additional
 -   **Description:**  
     Provides localised market analysis statistics (total listings, average and median prices, price variance, and average review score) for a given location.
     
+  - **Query Parameters:**
+     `location` (string) – The location (city or region) to analyse
 -   **Justification:**  
     This endpoint delivers detailed regional insights, enabling investors to understand local market dynamics and identify areas with attractive investment prospects.
     
@@ -125,6 +147,9 @@ Implemented not only the required cheapest listings endpoint but also additional
 -   **Description:**  
     Given a property name, returns its cost percentile ranking within its location, indicating where it stands relative to local listings.
     
+  - **Query Parameters:**
+     `name` (string) – The property name to analyse    
+
 -   **Justification:**  
     Comparing a property’s price to its local market distribution highlights relative undervaluation or overvaluation—a critical metric that can be adapted to evaluate investment potential across sectors.
    
