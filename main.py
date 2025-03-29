@@ -358,10 +358,5 @@ if __name__ == '__main__':
     print("Result has been stored in", csv_file)
     print(f"Total expected properties: {number_of_properties}")
 
-    i = 0
-    while True:
-        i += 1
-
-
 
     scraper.close()
