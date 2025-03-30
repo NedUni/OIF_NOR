@@ -138,7 +138,10 @@ class BookingScraper:
                 By.CSS_SELECTOR, "a[target='_blank'][rel='noopener noreferrer']"
             ).get_attribute("href")
 
-            # address = self.get_address(detail_link)
+            # try:
+            #     url = self.get_address(test)
+            # except:
+            #     url = test
 
             item = {
                 "title": title,
@@ -357,7 +360,5 @@ if __name__ == '__main__':
     
     print("Scape is complete")
     print("Result has been stored in", csv_file)
-    print(f"Total expected properties: {number_of_properties}")
-
 
     scraper.close()
